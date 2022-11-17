@@ -10,15 +10,21 @@ provider:
       Action:
         - dynamodb:*
       Resource:
-        - arn:aws:dynamodb:us-west-2:072519879248:table/TaskTable
+        - arn:aws:dynamodb:us-west-2:072519879248:table/TaskTable 
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/hello.hello
     events:
       - httpApi:
           path: /
           method: get
+  createTask:
+    handler: src/addTask.addTask
+    events:
+      - httpApi:
+          path: /tasks
+          method: post
 
 resources:
   Resources:
@@ -32,4 +38,4 @@ resources:
             AttributeType: S
         KeySchema:
           - AttributeName: id
-            KeyType: HASH 
+            KeyType: HASH
