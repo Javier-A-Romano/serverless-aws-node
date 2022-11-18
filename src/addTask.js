@@ -10,7 +10,6 @@ const addTask = async (event) => {
     const id = v4();
   
 
-    console.log(title +"@@♠4@"+description)
     const newTask = {
       id,
       title:title,
